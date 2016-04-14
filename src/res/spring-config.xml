@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ctx="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+        <ctx:component-scan base-package="com.springeltests.*"/>
+    <bean id="test2" class="com.springeltests.operators.Test2"
+          p:o1="#{@case2.p1.concat(case2.p1)+case2.returnFooString()}" p:o2="#{case2.p2.indexOf('a')*100}">
+        <property name="o21" value="#{new MyClazz1()  }"/>
+        <property name="o3" value="#{{'string1','string2','string3'}}"/>
+        <property name="o4" value="#{new Integer[] {100,200,300}}"/>
+        <property name="listOfLists" value="#{{{'element1','element2'},{'element3','element4'}}}"/>
+        <property name="o6" value="#{case2 instanceof T(String)}"/>
+        <property name="selector" value="#{case2.p4.?[#this > 150]}"/>
+        <property name="boxSelector" value="#{case2.boxes.?[size > 150]}"/>
+        <property name="boxSizes" value="#{@case2.boxes.![size]}"/>
+        <property name="safeBoxSize" value="#{@case2.p5?.size}"/>
+        <property name="bs" value="#{@a0.aaass.![bbbs.![age]]}"/>
+        <property name="bss" value="#{a0.aaass.?[bbbs.size()>1].size()}"/>
+    </bean>
+    <bean id="case2" class="com.springeltests.operators.Case2">
+        <property name="p1" value="#{@a0.mmm?:'foo'}"/>
+        <property name="p2" value="#{@case2.returnFooString().contains('oo')?: @t1.size+'_'}"/>
+        <property name="p3" value="#{new String[3] {'aaa','bbb','ccc'}}"/>
+        <property name="p4">
+            <array>
+                <value>100</value>
+                <value>200</value>
+                <value>300</value>
+            </array>
+        </property>
+        <property name="boxes" value="#{{t1, t2, t3 }}"/>
+        <property name="p5" value="#{@t4}"/>
+    </bean>
+    <bean id="t1" class="com.springeltests.operators.MyBox" p:size="100"/>
+    <bean id="t2" class="com.springeltests.operators.MyBox" p:size="200"/>
+    <bean id="t3" class="com.springeltests.operators.MyBox" p:size="300"/>
+    <bean id="t4" class="com.springeltests.operators.MyBox" p:size="400" />
+    <bean id="b11" class="com.springeltests.operators.BBB" p:age="18"/>
+    <bean id="b12" class="com.springeltests.operators.BBB" p:age="16"/>
+    <bean id="b13" class="com.springeltests.operators.BBB" p:age="21"/>
+    <bean id="b14" class="com.springeltests.operators.BBB" p:age="15"/>
+    <bean id="a11" class="com.springeltests.operators.AAA" p:bbbs="#{{@b11, @b12}}"/>
+    <bean id="a12" class="com.springeltests.operators.AAA" p:bbbs="#{{@b13, @b14}}"/>
+    <bean id="a0" class="A0" p:aaass="#{{@a11,@a12}}" p:mmm="" />
+</beans>
