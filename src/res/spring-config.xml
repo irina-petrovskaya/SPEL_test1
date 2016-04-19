@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ctx="http://www.springframework.org/schema/context"
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
-        <ctx:component-scan base-package="com.springeltests.*"/>
+    <ctx:component-scan base-package="com.springeltests.*"/>
     <bean id="test2" class="com.springeltests.operators.Test2"
           p:o1="#{@case2.p1.concat(case2.p1)+case2.returnFooString()}" p:o2="#{case2.p2.indexOf('a')*100}">
         <property name="o21" value="#{new MyClazz1()  }"/>
@@ -35,12 +35,12 @@
     <bean id="t1" class="com.springeltests.operators.MyBox" p:size="100"/>
     <bean id="t2" class="com.springeltests.operators.MyBox" p:size="200"/>
     <bean id="t3" class="com.springeltests.operators.MyBox" p:size="300"/>
-    <bean id="t4" class="com.springeltests.operators.MyBox" p:size="400" />
+    <bean id="t4" class="com.springeltests.operators.MyBox" p:size="400"/>
     <bean id="b11" class="com.springeltests.operators.BBB" p:age="18"/>
     <bean id="b12" class="com.springeltests.operators.BBB" p:age="16"/>
     <bean id="b13" class="com.springeltests.operators.BBB" p:age="21"/>
     <bean id="b14" class="com.springeltests.operators.BBB" p:age="15"/>
     <bean id="a11" class="com.springeltests.operators.AAA" p:bbbs="#{{@b11, @b12}}"/>
     <bean id="a12" class="com.springeltests.operators.AAA" p:bbbs="#{{@b13, @b14}}"/>
-    <bean id="a0" class="A0" p:aaass="#{{@a11,@a12}}" p:mmm="" />
+    <bean id="a0" class="A0" p:aaass="#{{@a11,@a12}}" p:mmm=""/>
 </beans>
