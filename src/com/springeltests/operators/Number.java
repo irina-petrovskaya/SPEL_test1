@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 @Component("numberBean")
 public class Number {
 
-	@Value("999")
-	private int nom;
+    @Value("999")
+    private int nom;
 
     @Value("#{'foo'.contains('f')}")
     private boolean boo1;
@@ -21,11 +21,11 @@ public class Number {
     }
 
     public int getNom() {
-		return nom;
-	}
+        return nom;
+    }
 
-	public void setNom(int no) {
-		this.nom = no;
-	}
+    public void setNom(int no) {
+        this.nom = no;
+    }
 
 }

@@ -14,6 +14,7 @@ public class Case1 {
     public int getNum() {
         return num;
     }
+
     @Value("12")
     public void setNum(int num) {
         this.num = num;
